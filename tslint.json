@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "tslint-xo/space"
+  ],
+  "rules": {
+    "no-implicit-dependencies": [false],
+    "await-promise": false,
+    "no-return-await": false,
+    "object-curly-spacing": [true],
+    "whitespace": [true, "check-module"],
+    "ter-indent": [true, 2, { "SwitchCase": 1 }],
+    "quotemark": [true, "single"],
+    "trailing-comma":  [false],
+    "interface-name": [true, "never-prefix"],
+    "array-type": [true, "generic"],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "variable-name": false,
+    "switch-default": false,
+    "no-unnecessary-class": false,
+    "no-void-expression": false
+  }
+}

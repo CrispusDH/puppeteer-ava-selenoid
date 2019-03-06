@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "target": "es6",
+    "sourceMap": true,
+    "outDir": "dist",
+    "types": ["node", "puppeteer"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true
+  }
+}
