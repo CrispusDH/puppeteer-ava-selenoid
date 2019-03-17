@@ -6,7 +6,7 @@ const test = anyTest as TestInterface<{browser: puppeteer.Browser}>;
 test.beforeEach('Setup browser', async t => {
   t.context.browser = await puppeteer.launch(
     {
-      headless: false,
+      headless: true,
       defaultViewport: {
         width: 1366,
         height:766
@@ -24,6 +24,23 @@ test('Check title #1', async t => {
   const page = pages[0];
   await page.goto('https://google.com');
   const title = await page.title();
-  await new Promise(resolve => setTimeout(resolve, 4000));
+  t.is(title, 'Google');
+});
+
+test('Check title #2', async t => {
+  const browser = t.context.browser;
+  const pages = await browser.pages();
+  const page = pages[0];
+  await page.goto('https://google.com');
+  const title = await page.title();
+  t.is(title, 'Google');
+});
+
+test('Check title #3', async t => {
+  const browser = t.context.browser;
+  const pages = await browser.pages();
+  const page = pages[0];
+  await page.goto('https://google.com');
+  const title = await page.title();
   t.is(title, 'Google');
 });

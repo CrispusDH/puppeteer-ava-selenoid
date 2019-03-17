@@ -8,16 +8,27 @@
     "ava": "1.3.1",
     "@types/node": "11.11.3",
     "puppeteer": "1.13.0",
-    "@types/puppeteer": "1.12.3"
+    "@types/puppeteer": "1.12.3",
+    "axios": "0.18.0"
   },
   "scripts": {
     "tsc": "tsc",
     "ava": "ava",
     "clean": "rm -rf dist",
     "pretest": "npm run clean && npm run lint && npm run tsc",
-    "test": "npm run ava",
+    "test": "npm run ava dist/puppeteer-ava.js",
     "posttest": "npm run clean",
-    "lint": "tslint --project tsconfig.json 'src/**/*.ts' 'test/**/*.ts'"
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts' 'test/**/*.ts'",
+    "cm:install": "curl -s https://aerokube.com/cm/bash | bash",
+    "selenoid:download": "./cm selenoid download vaniapooh/chrome:71.0-devtools --force",
+    "selenoid:configure": "./cm selenoid configure --browsers chrome:71.0",
+    "selenoid:start": "./cm selenoid start",
+    "selenoid:stop": "./cm selenoid stop",
+    "selenoid:cleanup": "./cm selenoid cleanup",
+    "selenoid:rm": "docker rm -f $(docker ps -aq)",
+    "prestest": "npm run selenoid:download && npm run selenoid:configure && npm run selenoid:start && npm run pretest",
+    "stest": "npm run ava dist/puppeteer-selenoid.js && npm run aftertest || npm run aftertest",
+    "aftertest": "npm run selenoid:cleanup && npm run selenoid:stop && npm run selenoid:rm && npm run clean"
   },
   "ava": {
     "files": [
