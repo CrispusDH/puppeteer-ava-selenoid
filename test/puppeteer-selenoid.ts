@@ -12,6 +12,7 @@ test.beforeEach('Setup browser', async t => {
       "desiredCapabilities":
         {
           browserName: "chrome",
+          browserVersion: "75.0",
           "selenoid:options": {
             sessionTimeout: '3m',
             enableVnc: true
